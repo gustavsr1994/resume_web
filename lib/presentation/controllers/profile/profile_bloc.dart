@@ -12,10 +12,16 @@ class ProfileBloc extends Bloc<ProfileEvent, ProfileState> {
   ProfileBloc() : super(ProfileInitial()) {
     on<GetProfile>((event, emit) async {
       final result =
-          await ProfieRepositoryImp(dataSource: ProfileDataSourceImp())
+          await ProfileRepositoryImp(dataSource: ProfileDataSourceImp())
               .dataProfile();
-      if (result.isSuccess()) {
-        emit(ProfileSuccess(dataEntity: result.getSuccess()!));
+      final urlPhoto =
+          await ProfileRepositoryImp(dataSource: ProfileDataSourceImp())
+              .getUrlPhoto();
+      if (result.isSuccess() && urlPhoto.isSuccess()) {
+        emit(ProfileSuccess(
+          dataEntity: result.getSuccess()!,
+          urlPhoto: urlPhoto.getSuccess()!,
+        ));
       } else {
         if (result.getError() is ServerFailure) {
           emit(ProfileError(message: result.getError()!.message));

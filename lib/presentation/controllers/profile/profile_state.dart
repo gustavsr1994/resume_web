@@ -11,10 +11,11 @@ final class ProfileInitial extends ProfileState {
 
 class ProfileSuccess extends ProfileState {
   final ProfileEntity dataEntity;
-  ProfileSuccess({required this.dataEntity});
+  final String urlPhoto;
+  ProfileSuccess({required this.dataEntity, required this.urlPhoto});
 
   @override
-  List<Object> get props => [dataEntity];
+  List<Object> get props => [dataEntity, urlPhoto];
 }
 
 class ProfileNoData extends ProfileState {

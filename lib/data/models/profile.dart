@@ -2,7 +2,8 @@ import 'package:resume_web/domain/entity/education_entity.dart';
 import 'package:resume_web/domain/entity/profile_entity.dart';
 
 class Profile extends ProfileEntity {
-  Profile({required super.name, required super.desc, required super.education});
+  const Profile(
+      {required super.name, required super.desc, required super.education});
 
   factory Profile.fromJson(Map<String, dynamic> json) {
     return Profile(
@@ -12,7 +13,7 @@ class Profile extends ProfileEntity {
   }
 
   Map<String, dynamic> toJson() {
-    final Map<String, dynamic> data = new Map<String, dynamic>();
+    final Map<String, dynamic> data = <String, dynamic>{};
     data['desc'] = desc;
     data['education'] = education.toJson();
     data['name'] = name;

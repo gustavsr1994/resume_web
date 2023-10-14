@@ -1,10 +1,10 @@
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:resume_web/config/routes/route_path.dart';
 import 'package:resume_web/config/themes/color_pallete.dart';
 import 'package:resume_web/firebase_options.dart';
 import 'package:resume_web/presentation/controllers/profile/profile_bloc.dart';
-import 'package:resume_web/presentation/pages/home_page.dart';
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
@@ -20,14 +20,14 @@ class MyApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return BlocProvider(
       create: (context) => ProfileBloc(),
-      child: MaterialApp(
+      child: MaterialApp.router(
         title: 'My Resume',
         theme: ThemeData(
           colorScheme: ColorScheme.fromSeed(seedColor: colorGoldLight),
           useMaterial3: true,
         ),
         debugShowCheckedModeBanner: false,
-        home: const HomePage(),
+        routerConfig: router,
       ),
     );
   }

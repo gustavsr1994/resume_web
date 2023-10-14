@@ -1,17 +1,12 @@
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
-import 'package:resume_web/config/responsive_config.dart';
 import 'package:resume_web/config/themes/color_pallete.dart';
+import 'package:resume_web/config/themes/style_text.dart';
 
 class Header extends StatelessWidget {
-  final bool typeLogo;
+  final int indexPage;
   final double sizeHeight;
-  final ScrollController scrollController;
-  final Function() functionSidebar;
-  const Header(this.typeLogo, this.sizeHeight, this.scrollController,
-      this.functionSidebar,
-      {Key? key})
-      : super(key: key);
+  const Header(this.indexPage, this.sizeHeight, {Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -22,81 +17,51 @@ class Header extends StatelessWidget {
       margin: const EdgeInsets.symmetric(horizontal: 50, vertical: 20),
       decoration: const BoxDecoration(color: Colors.transparent),
       child: Row(
-        mainAxisAlignment: MainAxisAlignment.spaceBetween,
+        mainAxisAlignment: MainAxisAlignment.center,
         children: [
-          InkWell(
-            onTap: () => typeLogo
-                ? scrollController.animateTo(0,
-                    duration: const Duration(seconds: 1), curve: Curves.ease)
-                : context.pop(),
-            child: Image.asset(
-                "lib/presentation/assets/images/${typeLogo ? "logo_wizh" : "logo_wizh_white"}.png",
-                height: 40),
+          Row(
+            mainAxisAlignment: MainAxisAlignment.spaceBetween,
+            children: [
+              TextButton(
+                  onPressed: () {
+                    indexPage == 0 ? null : context.pop();
+                  },
+                  child: Text("Home",
+                      style: styleTextMedium(
+                          indexPage == 0 ? colorGoldLight : colorWhite,
+                          indexPage == 0
+                              ? FontWeight.bold
+                              : FontWeight.normal))),
+              TextButton(
+                  onPressed: () {
+                    context.go('/education');
+                  },
+                  child: Text("Education",
+                      style: styleTextMedium(
+                          indexPage == 1 ? colorGoldLight : colorWhite,
+                          indexPage == 1
+                              ? FontWeight.bold
+                              : FontWeight.normal))),
+              TextButton(
+                  onPressed: () {},
+                  child: Text("Work",
+                      style: styleTextMedium(
+                          indexPage == 2 ? colorGoldLight : colorWhite,
+                          indexPage == 2
+                              ? FontWeight.bold
+                              : FontWeight.normal))),
+              TextButton(
+                  onPressed: () {},
+                  child: Text("Portofolio",
+                      style: styleTextMedium(
+                          indexPage == 3 ? colorGoldLight : colorWhite,
+                          indexPage == 3
+                              ? FontWeight.bold
+                              : FontWeight.normal)))
+            ],
           ),
-          ResponsiveConfig.isSmallScreen(context)
-              ? InkWell(
-                  onTap: functionSidebar,
-                  child: Icon(Icons.dehaze_outlined,
-                      color: typeLogo
-                          ? setColor(sizeHeight, size.height, colorGoldLight,
-                              colorWhite)
-                          : colorWhite))
-              : Row(
-                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                  children: [
-                    TextButton(
-                        onPressed: () {
-                          typeLogo ? null : context.pop();
-                        },
-                        child: Text(
-                          "Beranda",
-                          style: TextStyle(
-                            color: setColor(sizeHeight, size.height, colorBlack,
-                                colorWhite),
-                            fontWeight:
-                                typeLogo ? FontWeight.bold : FontWeight.normal,
-                          ),
-                        )),
-                    TextButton(
-                        onPressed: () {
-                          print("DOWNLOAD");
-                        },
-                        child: Text(
-                          "Unduh App",
-                          style: TextStyle(
-                              color: setColor(sizeHeight, size.height,
-                                  colorBlack, colorWhite)),
-                        )),
-                    TextButton(
-                        onPressed: () {
-                          context.go("/login");
-                        },
-                        child: Text(
-                          "Masuk/Daftar",
-                          style: TextStyle(
-                            color: setColor(sizeHeight, size.height, colorBlack,
-                                colorWhite),
-                            fontWeight:
-                                typeLogo ? FontWeight.normal : FontWeight.bold,
-                          ),
-                        ))
-                  ],
-                ),
         ],
       ),
     );
-  }
-
-  Color setColor(double currentHeight, double deviceHeight, Color colorMain,
-      Color colorSecondary) {
-    if ((currentHeight == deviceHeight) || (currentHeight >= deviceHeight)) {
-      if (currentHeight >= 2 * deviceHeight) {
-        return colorMain;
-      } else {
-        return colorSecondary;
-      }
-    } else {
-      return colorMain;
-    }
   }
 }

@@ -4,4 +4,5 @@ import 'package:resume_web/domain/entity/profile_entity.dart';
 
 abstract class ProfileRepository {
   Future<Result<Failure, ProfileEntity>> dataProfile();
+  Future<Result<Failure, String>> getUrlPhoto();
 }
