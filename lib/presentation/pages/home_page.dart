@@ -5,6 +5,7 @@ import 'package:resume_web/config/themes/style_text.dart';
 import 'package:resume_web/presentation/controllers/profile/profile_bloc.dart';
 import 'package:resume_web/presentation/widgets/header.dart';
 import 'package:resume_web/presentation/widgets/image_network_circle.dart';
+import 'package:resume_web/presentation/widgets/socmed_button.dart';
 
 class HomePage extends StatefulWidget {
   const HomePage({super.key});
@@ -60,21 +61,35 @@ class _HomePageState extends State<HomePage> {
                           child: ListView(shrinkWrap: true, children: [
                             Row(
                               crossAxisAlignment: CrossAxisAlignment.start,
+                              mainAxisAlignment: MainAxisAlignment.start,
                               children: [
                                 ImageNetworkCircle(state.urlPhoto, 6),
                                 SizedBox(
-                                  width: sized.width / 35,
+                                  width: sized.width / 25,
                                 ),
                                 Column(
+                                  crossAxisAlignment: CrossAxisAlignment.start,
                                   children: [
                                     Text(
                                       state.dataEntity.name,
                                       style: styleTextLarge(
                                           colorGoldLight, FontWeight.bold),
                                     ),
-                                    // ListView.builder(itemBuilder: (context, index) {
-                                    //   return Text(state.dataEntity.)
-                                    // },)
+                                    SizedBox(
+                                      height: sized.height / 15,
+                                      child: ListView.builder(
+                                        shrinkWrap: true,
+                                        scrollDirection: Axis.horizontal,
+                                        itemCount:
+                                            state.dataEntity.socmed.length,
+                                        itemBuilder: (context, index) =>
+                                            SocmedButton(
+                                                state.dataEntity.socmed[index]
+                                                    .icon,
+                                                state.dataEntity.socmed[index]
+                                                    .link),
+                                      ),
+                                    )
                                   ],
                                 ),
                               ],

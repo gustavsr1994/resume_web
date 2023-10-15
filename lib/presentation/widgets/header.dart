@@ -43,7 +43,9 @@ class Header extends StatelessWidget {
                               ? FontWeight.bold
                               : FontWeight.normal))),
               TextButton(
-                  onPressed: () {},
+                  onPressed: () {
+                    context.go('/work');
+                  },
                   child: Text("Work",
                       style: styleTextMedium(
                           indexPage == 2 ? colorGoldLight : colorWhite,
