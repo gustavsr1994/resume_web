@@ -13,7 +13,7 @@ class SocmedButton extends StatelessWidget {
         onTap: () => _launchUrl(link),
         child: Container(
           margin: const EdgeInsets.only(right: 15),
-          child: ImageNetworkSquare(nameIcon, 15),
+          child: ImageNetworkSquare(nameIcon, 25),
         ));
   }
 

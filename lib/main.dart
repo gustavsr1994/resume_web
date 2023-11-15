@@ -21,7 +21,7 @@ class MyApp extends StatelessWidget {
     return BlocProvider(
       create: (context) => ProfileBloc(),
       child: MaterialApp.router(
-        title: 'My Resume',
+        title: 'Gustav S R',
         theme: ThemeData(
           colorScheme: ColorScheme.fromSeed(seedColor: colorGoldLight),
           useMaterial3: true,

@@ -11,57 +11,34 @@ class Header extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     var size = MediaQuery.of(context).size;
-    return Container(
+    return SizedBox(
       width: size.width,
       height: size.height / 10,
-      margin: const EdgeInsets.symmetric(horizontal: 50, vertical: 20),
-      decoration: const BoxDecoration(color: Colors.transparent),
       child: Row(
         mainAxisAlignment: MainAxisAlignment.center,
         children: [
-          Row(
-            mainAxisAlignment: MainAxisAlignment.spaceBetween,
-            children: [
-              TextButton(
-                  onPressed: () {
-                    indexPage == 0 ? null : context.pop();
-                  },
-                  child: Text("Home",
-                      style: styleTextMedium(
-                          indexPage == 0 ? colorGoldLight : colorWhite,
-                          indexPage == 0
-                              ? FontWeight.bold
-                              : FontWeight.normal))),
-              TextButton(
-                  onPressed: () {
-                    context.go('/education');
-                  },
-                  child: Text("Education",
-                      style: styleTextMedium(
-                          indexPage == 1 ? colorGoldLight : colorWhite,
-                          indexPage == 1
-                              ? FontWeight.bold
-                              : FontWeight.normal))),
-              TextButton(
-                  onPressed: () {
-                    context.go('/work');
-                  },
-                  child: Text("Work",
-                      style: styleTextMedium(
-                          indexPage == 2 ? colorGoldLight : colorWhite,
-                          indexPage == 2
-                              ? FontWeight.bold
-                              : FontWeight.normal))),
-              TextButton(
-                  onPressed: () {},
-                  child: Text("Portofolio",
-                      style: styleTextMedium(
-                          indexPage == 3 ? colorGoldLight : colorWhite,
-                          indexPage == 3
-                              ? FontWeight.bold
-                              : FontWeight.normal)))
-            ],
-          ),
+          TextButton(
+              onPressed: () {
+                indexPage == 0 ? null : context.pop();
+              },
+              child: Text("Home",
+                  style: styleTextMedium(
+                      indexPage == 0 ? colorGoldLight : colorWhite,
+                      indexPage == 0 ? FontWeight.bold : FontWeight.normal))),
+          TextButton(
+              onPressed: () {
+                context.go('/work');
+              },
+              child: Text("Work",
+                  style: styleTextMedium(
+                      indexPage == 1 ? colorGoldLight : colorWhite,
+                      indexPage == 1 ? FontWeight.bold : FontWeight.normal))),
+          TextButton(
+              onPressed: () {},
+              child: Text("Portofolio",
+                  style: styleTextMedium(
+                      indexPage == 2 ? colorGoldLight : colorWhite,
+                      indexPage == 2 ? FontWeight.bold : FontWeight.normal)))
         ],
       ),
     );

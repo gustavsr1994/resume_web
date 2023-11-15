@@ -1,3 +1,4 @@
+import 'package:expandable/expandable.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:resume_web/config/themes/color_pallete.dart';
@@ -28,41 +29,68 @@ class _WorkPageState extends State<WorkPage> {
           BlocBuilder<ProfileBloc, ProfileState>(
             builder: (context, state) {
               if (state is ProfileSuccess) {
-                return ListView.builder(
-                  itemCount: state.dataEntity.listWork.length,
-                  itemBuilder: (context, index) {
-                    return Padding(
-                      padding: const EdgeInsets.symmetric(horizontal: 50),
-                      child: Card(
-                        elevation: 5,
-                        color: colorBlack,
-                        shape: const RoundedRectangleBorder(
-                            side: BorderSide(color: colorWhite),
-                            borderRadius:
-                                BorderRadius.all(Radius.circular(15))),
-                        child: Container(
-                          height: sized.height / 4,
-                          width: sized.width,
-                          margin: const EdgeInsets.symmetric(
-                              vertical: 10, horizontal: 10),
-                          child: Column(
-                              crossAxisAlignment: CrossAxisAlignment.center,
-                              mainAxisAlignment: MainAxisAlignment.center,
-                              children: [
-                                Text(state.dataEntity.listWork[index].office!,
-                                    style: styleTextLarge(
-                                        colorGoldLight, FontWeight.bold)),
-                                Text(state.dataEntity.listWork[index].job!,
-                                    style: styleTextMedium(
-                                        colorGoldLight, FontWeight.normal)),
-                                Text(state.dataEntity.listWork[index].period!,
-                                    style: styleTextMedium(
-                                        colorGoldLight, FontWeight.normal)),
-                              ]),
-                        ),
-                      ),
-                    );
-                  },
+                return Center(
+                  child: Container(
+                    height: MediaQuery.sizeOf(context).height / 1.5,
+                    width: MediaQuery.sizeOf(context).width,
+                    padding: const EdgeInsets.symmetric(
+                        vertical: 10, horizontal: 20),
+                    child: ListView.builder(
+                      itemCount: state.dataEntity.listWork.length,
+                      itemBuilder: (context, index) {
+                        return Container(
+                          padding: const EdgeInsets.symmetric(
+                              vertical: 5, horizontal: 10),
+                          margin: const EdgeInsets.symmetric(vertical: 10),
+                          decoration: BoxDecoration(
+                              borderRadius:
+                                  const BorderRadius.all(Radius.circular(10)),
+                              border: Border.all(color: colorGoldLight)),
+                          child: ExpandableNotifier(
+                              child: ExpandablePanel(
+                                  theme: const ExpandableThemeData(
+                                      headerAlignment:
+                                          ExpandablePanelHeaderAlignment.center,
+                                      tapBodyToCollapse: true,
+                                      iconColor: colorGoldLight),
+                                  header: Text(
+                                      state.dataEntity.listWork[index].office!,
+                                      style: styleTextMedium(
+                                          colorGoldLight, FontWeight.bold)),
+                                  collapsed: Column(
+                                      crossAxisAlignment:
+                                          CrossAxisAlignment.start,
+                                      mainAxisAlignment:
+                                          MainAxisAlignment.center,
+                                      children: [
+                                        Text(
+                                            state.dataEntity.listWork[index]
+                                                .job!,
+                                            style: styleTextSmall(
+                                                colorGoldLight,
+                                                FontWeight.normal)),
+                                        Text(
+                                            state.dataEntity.listWork[index]
+                                                .period!,
+                                            style: styleTextSmall(
+                                                colorGoldLight,
+                                                FontWeight.normal)),
+                                      ]),
+                                  expanded: ListView.builder(
+                                    shrinkWrap: true,
+                                    itemCount: state.dataEntity.listWork[index]
+                                        .listResponsible.length,
+                                    itemBuilder: (context, indexResponsible) {
+                                      return Text(
+                                          '\u2022 ${state.dataEntity.listWork[index].listResponsible[indexResponsible].data!}',
+                                          style: styleTextSmall(
+                                              colorWhite, FontWeight.normal));
+                                    },
+                                  ))),
+                        );
+                      },
+                    ),
+                  ),
                 );
               } else {
                 return const SizedBox();

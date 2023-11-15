@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "84836536504",
+    "project_id": "gustav-project",
+    "storage_bucket": "gustav-project.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:84836536504:android:7e4066ae41a46b5903644d",
+        "android_client_info": {
+          "package_name": "com.example.resume_web"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAnMzKDo8Ib7kVorNXFXFz7zXKQme1VO5U"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
