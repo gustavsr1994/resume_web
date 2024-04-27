@@ -5,7 +5,6 @@ import 'package:resume_web/config/themes/color_pallete.dart';
 import 'package:resume_web/config/themes/style_text.dart';
 import 'package:resume_web/presentation/controllers/profile/profile_bloc.dart';
 import 'package:resume_web/presentation/widgets/header.dart';
-import 'package:resume_web/presentation/widgets/header_expandable.dart';
 import 'package:resume_web/presentation/widgets/image_network_circle.dart';
 import 'package:resume_web/presentation/widgets/socmed_button.dart';
 

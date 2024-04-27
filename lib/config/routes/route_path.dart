@@ -34,21 +34,6 @@ final GoRouter router = GoRouter(
             );
           },
         ),
-        GoRoute(
-          path: 'work',
-          pageBuilder: (context, state) {
-            return CustomTransitionPage(
-              child: const WorkPage(),
-              transitionsBuilder:
-                  (context, animation, secondaryAnimation, child) =>
-                      FadeTransition(
-                opacity:
-                    CurveTween(curve: Curves.easeInOutCirc).animate(animation),
-                child: child,
-              ),
-            );
-          },
-        ),
       ],
     ),
   ],

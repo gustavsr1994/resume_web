@@ -14,3 +14,12 @@ A few resources to get you started if this is your first Flutter project:
 For help getting started with Flutter development, view the
 [online documentation](https://docs.flutter.dev/), which offers tutorials,
 samples, guidance on mobile development, and a full API reference.
+
+# my_resume_web
+ 
+How to run this project :
+- fvm
+
+How to deploy this project :
+- fvm flutter build web
+- firebase deploy --only hosting

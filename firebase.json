@@ -1,1 +1,2 @@
 {"flutter":{"platforms":{"android":{"default":{"projectId":"gustav-project","appId":"1:84836536504:android:7e4066ae41a46b5903644d","fileOutput":"android/app/google-services.json"}},"dart":{"lib/firebase_options.dart":{"projectId":"gustav-project","configurations":{"android":"1:84836536504:android:7e4066ae41a46b5903644d","web":"1:84836536504:web:8e9a449d8ef8b24203644d"}}}}}}
+
