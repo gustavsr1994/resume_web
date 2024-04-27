@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
-import 'package:resume_web/presentation/pages/education_page.dart';
 import 'package:resume_web/presentation/pages/work_page.dart';
 
 import '../../presentation/pages/home_page.dart';
@@ -21,10 +20,10 @@ final GoRouter router = GoRouter(
       },
       routes: <RouteBase>[
         GoRoute(
-          path: 'education',
+          path: 'work',
           pageBuilder: (context, state) {
             return CustomTransitionPage(
-              child: const EducationPage(),
+              child: const WorkPage(),
               transitionsBuilder:
                   (context, animation, secondaryAnimation, child) =>
                       FadeTransition(

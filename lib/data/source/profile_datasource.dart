@@ -22,9 +22,10 @@ class ProfileDataSourceImp implements ProfileDatasource {
 
   @override
   Future<String> getPhotoProfile() async {
-    final storageRef =
-        FirebaseStorage.instance.ref().child("my_gallery/1696860774126.jpg");
-    final linkResult = await storageRef.getDownloadURL();
+    // final storageRef =
+    //     FirebaseStorage.instance.ref().child("my_gallery/1696860774126.jpg");
+    var linkResult =
+        'https://firebasestorage.googleapis.com/v0/b/gustav-project.appspot.com/o/my_gallery%2F1696860774126.jpg?alt=media&token=86a39bbb-3d2c-44ad-8107-ed6ccf95cad3';
     return linkResult;
   }
 }

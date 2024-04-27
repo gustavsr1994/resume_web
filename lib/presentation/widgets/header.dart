@@ -32,32 +32,23 @@ class Header extends StatelessWidget {
                           indexPage == 0
                               ? FontWeight.bold
                               : FontWeight.normal))),
-              TextButton(
-                  onPressed: () {
-                    context.go('/education');
-                  },
-                  child: Text("Education",
-                      style: styleTextMedium(
-                          indexPage == 1 ? colorGoldLight : colorWhite,
-                          indexPage == 1
-                              ? FontWeight.bold
-                              : FontWeight.normal))),
+              
               TextButton(
                   onPressed: () {
                     context.go('/work');
                   },
                   child: Text("Work",
                       style: styleTextMedium(
-                          indexPage == 2 ? colorGoldLight : colorWhite,
-                          indexPage == 2
+                          indexPage == 1 ? colorGoldLight : colorWhite,
+                          indexPage == 1
                               ? FontWeight.bold
                               : FontWeight.normal))),
               TextButton(
                   onPressed: () {},
                   child: Text("Portofolio",
                       style: styleTextMedium(
-                          indexPage == 3 ? colorGoldLight : colorWhite,
-                          indexPage == 3
+                          indexPage == 2 ? colorGoldLight : colorWhite,
+                          indexPage == 2
                               ? FontWeight.bold
                               : FontWeight.normal)))
             ],

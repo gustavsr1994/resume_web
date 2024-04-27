@@ -5,7 +5,9 @@ import 'package:url_launcher/url_launcher.dart';
 class SocmedButton extends StatelessWidget {
   final String nameIcon;
   final String link;
-  const SocmedButton(this.nameIcon, this.link, {super.key});
+
+  final num heightBox;
+  const SocmedButton(this.nameIcon, this.link, this.heightBox, {super.key});
 
   @override
   Widget build(BuildContext context) {
@@ -13,7 +15,7 @@ class SocmedButton extends StatelessWidget {
         onTap: () => _launchUrl(link),
         child: Container(
           margin: const EdgeInsets.only(right: 15),
-          child: ImageNetworkSquare(nameIcon, 15),
+          child: ImageNetworkSquare(nameIcon, 10, heightBox),
         ));
   }
 

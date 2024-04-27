@@ -6,20 +6,24 @@ import 'package:shimmer/shimmer.dart';
 class ImageNetworkSquare extends StatelessWidget {
   final String urlImage;
   final num size;
-
-  const ImageNetworkSquare(this.urlImage, this.size, {super.key});
+  final num heightBox;
+  
+  const ImageNetworkSquare(this.urlImage, this.size, this.heightBox,
+      {super.key});
   @override
   Widget build(BuildContext context) {
+    var width = MediaQuery.of(context).size.width;
+    var height = MediaQuery.of(context).size.height;
     return CachedNetworkImage(
         imageUrl: urlImage,
         imageBuilder: (context, imageProvider) => Container(
-              width: MediaQuery.of(context).size.width / size,
-              height: MediaQuery.of(context).size.width / size,
+              width: width / (heightBox == 150 ? 10 : 20),
+              height: height / 50,
               decoration: BoxDecoration(
                 borderRadius: const BorderRadius.all(Radius.circular(15)),
                 image: DecorationImage(
                   image: imageProvider,
-                  fit: BoxFit.cover,
+                  fit: BoxFit.fill,
                 ),
               ),
             ),
